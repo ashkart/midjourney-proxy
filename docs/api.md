@@ -23,7 +23,7 @@
 
 
 ## 2. 任务提交返回
-- code=1: 提交成功，result为任务ID
+- code=1: Submitted successfully，result为任务ID
     ```json
     {
       "code": 1,
@@ -34,11 +34,11 @@
       }
     }
     ```
-- code=21: 任务已存在，U时可能发生
+- code=21: 任务Already exists，U时可能发生
     ```json
     {
         "code": 21,
-        "description": "任务已存在",
+        "description": "任务Already exists",
         "result": "0741798445574458",
         "properties": {
             "status": "SUCCESS",
@@ -46,11 +46,11 @@
          }
     }
     ```
-- code=22: 提交成功，进入队列等待
+- code=22: Submitted successfully，进入队列等待
     ```json
     {
         "code": 22,
-        "description": "排队中，前面还有1个任务",
+        "description": "In line，there is more ahead1A task",
         "result": "0741798445574458",
         "properties": {
             "numberOfQueues": 1,
@@ -58,11 +58,11 @@
          }
     }
     ```
-- code=23: 队列已满，请稍后尝试
+- code=23: The queue is full, please try later
     ```json
     {
         "code": 23,
-        "description": "队列已满，请稍后尝试",
+        "description": "The queue is full, please try later",
         "result": "14001929738841620",
         "properties": {
             "discordInstanceId": "1118138338562560102"
@@ -80,7 +80,7 @@
          }
     }
     ```
-- other: 提交错误，description为错误描述
+- other: 提交error，description为error描述
 
 ## 3. `/mj/submit/simple-change` 绘图变化-simple
 接口作用同 `/mj/submit/change`(绘图变化)，传参方式不同，该接口接收content，格式为`ID 操作`，例如：1320098173412546 U2

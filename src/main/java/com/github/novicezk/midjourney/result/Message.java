@@ -26,7 +26,7 @@ public class Message<T> {
 	}
 
 	public static <Y> Message<Y> validationError() {
-		return new Message<>(ReturnCode.VALIDATION_ERROR, "校验错误");
+		return new Message<>(ReturnCode.VALIDATION_ERROR, "校验error");
 	}
 
 	public static <Y> Message<Y> failure() {

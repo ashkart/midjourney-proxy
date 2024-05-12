@@ -80,7 +80,7 @@ public class SubmitController {
 		try {
 			dataUrls = ConvertUtils.convertBase64Array(base64Array);
 		} catch (MalformedURLException e) {
-			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "base64格式错误");
+			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "base64格式error");
 		}
 		task.setPromptEn(promptEn);
 		task.setDescription("/imagine " + prompt);
@@ -92,7 +92,7 @@ public class SubmitController {
 	public SubmitResultVO simpleChange(@RequestBody SubmitSimpleChangeDTO simpleChangeDTO) {
 		TaskChangeParams changeParams = ConvertUtils.convertChangeParams(simpleChangeDTO.getContent());
 		if (changeParams == null) {
-			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "content参数错误");
+			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "content参数error");
 		}
 		SubmitChangeDTO changeDTO = new SubmitChangeDTO();
 		changeDTO.setAction(changeParams.getAction());
@@ -110,7 +110,7 @@ public class SubmitController {
 			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "taskId不能为空");
 		}
 		if (!Set.of(TaskAction.UPSCALE, TaskAction.VARIATION, TaskAction.REROLL).contains(changeDTO.getAction())) {
-			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "action参数错误");
+			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "action参数error");
 		}
 		String description = "/up " + changeDTO.getTaskId();
 		if (TaskAction.REROLL.equals(changeDTO.getAction())) {
@@ -123,7 +123,7 @@ public class SubmitController {
 			return SubmitResultVO.fail(ReturnCode.NOT_FOUND, "关联任务不存在或已失效");
 		}
 		if (!TaskStatus.SUCCESS.equals(targetTask.getStatus())) {
-			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "关联任务状态错误");
+			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "关联任务状态error");
 		}
 		if (!Set.of(TaskAction.IMAGINE, TaskAction.VARIATION, TaskAction.REROLL, TaskAction.BLEND).contains(targetTask.getAction())) {
 			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "关联任务不允许执行变化");
@@ -159,7 +159,7 @@ public class SubmitController {
 		try {
 			dataUrl = serializer.unserialize(describeDTO.getBase64());
 		} catch (MalformedURLException e) {
-			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "base64格式错误");
+			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "base64格式error");
 		}
 		Task task = newTask(describeDTO);
 		task.setAction(TaskAction.DESCRIBE);
@@ -173,10 +173,10 @@ public class SubmitController {
 	public SubmitResultVO blend(@RequestBody SubmitBlendDTO blendDTO) {
 		List<String> base64Array = blendDTO.getBase64Array();
 		if (base64Array == null || base64Array.size() < 2 || base64Array.size() > 5) {
-			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "base64List参数错误");
+			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "base64List参数error");
 		}
 		if (blendDTO.getDimensions() == null) {
-			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "dimensions参数错误");
+			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "dimensions参数error");
 		}
 		IDataUrlSerializer serializer = new DataUrlSerializer();
 		List<DataUrl> dataUrlList = new ArrayList<>();
@@ -186,7 +186,7 @@ public class SubmitController {
 				dataUrlList.add(dataUrl);
 			}
 		} catch (MalformedURLException e) {
-			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "base64格式错误");
+			return SubmitResultVO.fail(ReturnCode.VALIDATION_ERROR, "base64格式error");
 		}
 		Task task = newTask(blendDTO);
 		task.setAction(TaskAction.BLEND);

@@ -74,7 +74,7 @@ public class ErrorMessageHandler extends MessageHandler {
 			if ("link".equals(embed.getString("type", "")) || CharSequenceUtil.isBlank(description)) {
 				return;
 			}
-			// 兼容 Invalid link! \ Could not complete 等错误
+			// 兼容 Invalid link! \ Could not complete 等error
 			Task task = findTaskWhenError(instance, messageType, message);
 			if (task != null) {
 				message.put(Constants.MJ_MESSAGE_HANDLED, true);

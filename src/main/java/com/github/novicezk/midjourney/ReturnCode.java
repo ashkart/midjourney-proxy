@@ -13,7 +13,7 @@ public final class ReturnCode {
 	 */
 	public static final int NOT_FOUND = 3;
 	/**
-	 * 校验错误.
+	 * 校验error.
 	 */
 	public static final int VALIDATION_ERROR = 4;
 	/**
@@ -22,11 +22,11 @@ public final class ReturnCode {
 	public static final int FAILURE = 9;
 
 	/**
-	 * 已存在.
+	 * Already exists.
 	 */
 	public static final int EXISTED = 21;
 	/**
-	 * 排队中.
+	 * In line.
 	 */
 	public static final int IN_QUEUE = 22;
 	/**

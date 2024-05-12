@@ -11,10 +11,10 @@ import java.util.Map;
 @ApiModel("提交结果")
 public class SubmitResultVO {
 
-	@ApiModelProperty(value = "状态码: 1(提交成功), 21(已存在), 22(排队中), other(错误)", required = true, example = "1")
+	@ApiModelProperty(value = "状态码: 1(Submitted successfully), 21(Already exists), 22(In line), other(error)", required = true, example = "1")
 	private int code;
 
-	@ApiModelProperty(value = "描述", required = true, example = "提交成功")
+	@ApiModelProperty(value = "描述", required = true, example = "Submitted successfully")
 	private String description;
 
 	@ApiModelProperty(value = "任务ID", example = "1320098173412546")

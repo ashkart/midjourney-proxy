@@ -13,7 +13,7 @@ repositories {
 }
 
 tasks.jar {
-    manifest.attributes["Main-Class"] = "com.example.MyMainClass"
+    manifest.attributes["Main-Class"] = "com.github.novicezk.midjourney.ProxyApplication"
     val dependencies = configurations
         .runtimeClasspath
         .get()

@@ -17,11 +17,15 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 @Component
-@RequiredArgsConstructor
 public class DiscordLoadBalancer {
 	private final IRule rule;
 
-	private final List<DiscordInstance> instances = Collections.synchronizedList(new ArrayList<>());
+	private final List<DiscordInstance> instances;
+
+	public DiscordLoadBalancer(IRule rule, List<DiscordInstance> instances) {
+		this.rule = rule;
+		this.instances = instances;
+	}
 
 	public List<DiscordInstance> getAllInstances() {
 		return this.instances;
